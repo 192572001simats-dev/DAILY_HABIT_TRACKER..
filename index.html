@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Habit Tracker</title>
+    <meta
+      name="description"
+      content="Modern habit tracker dashboard with weekly check-ins, streaks, and analytics."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar glass-panel">
+        <div class="brand-block">
+          <div class="brand-icon">✓</div>
+          <div>
+            <p class="eyebrow">Daily Momentum</p>
+            <h1>Habit Tracker</h1>
+          </div>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="toggle-icon">🌙</span>
+        </button>
+      </header>
+
+      <main class="dashboard">
+        <section class="glass-panel form-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow subtle">New Habit</p>
+              <h2 id="formTitle">Add a habit</h2>
+            </div>
+          </div>
+
+          <form id="habitForm">
+            <div class="field-group">
+              <label for="habitName">Habit name</label>
+              <input id="habitName" name="habitName" type="text" maxlength="40" placeholder="Morning run" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="habitCategory">Category tag</label>
+                <input id="habitCategory" name="habitCategory" type="text" maxlength="18" placeholder="Health" list="categorySuggestions" />
+              </div>
+
+              <div class="field-group">
+                <label for="habitTarget">Daily target</label>
+                <input id="habitTarget" name="habitTarget" type="number" min="1" max="10" value="1" />
+              </div>
+            </div>
+
+            <datalist id="categorySuggestions">
+              <option value="Health"></option>
+              <option value="Productivity"></option>
+              <option value="Mindfulness"></option>
+              <option value="Learning"></option>
+              <option value="Fitness"></option>
+              <option value="Wellness"></option>
+            </datalist>
+
+            <div class="form-actions">
+              <button id="submitButton" type="submit" class="primary-btn">Add habit</button>
+              <button id="cancelEdit" type="button" class="secondary-btn hidden">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="glass-panel stats-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow subtle">Overview</p>
+              <h2>Progress</h2>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card main-progress">
+              <span class="stat-label">Daily completion</span>
+              <strong id="completionRate">0%</strong>
+              <div class="progress-track">
+                <span id="completionProgress"></span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-label">Current streak</span>
+              <strong id="currentStreak">0 days</strong>
+            </div>
+
+            <div class="stat-card">
+              <span class="stat-label">Longest streak</span>
+              <strong id="longestStreak">0 days</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="glass-panel habits-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow subtle">This week</p>
+              <h2>Habits</h2>
+            </div>
+            <span id="habitCount" class="habit-count">0 habits</span>
+          </div>
+
+          <div id="habitList" class="habit-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
